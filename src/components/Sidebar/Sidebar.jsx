@@ -36,7 +36,6 @@ const Sidebar = ({ locations, regions, setRegions, ping, setPing }) => {
             const endpointName = endpoint.match(/ec2\.(.*?)\.amazonaws/)[1]
             results[endpointName] = time
           }
-          console.log(results)
           setPing(results)
         }}
       >
