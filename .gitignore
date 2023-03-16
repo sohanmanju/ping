@@ -130,4 +130,4 @@ dist
 .prettierrc
 .prettierignore
 .new-component-config.json
-.gitattributes
+vite.config.js
