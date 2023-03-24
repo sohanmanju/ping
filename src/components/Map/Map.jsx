@@ -11,6 +11,7 @@ import styled from 'styled-components'
 import { geoMiller } from 'd3-geo-projection'
 import useGeolocation from 'react-hook-geolocation'
 import React from 'react'
+import getColorCode from '../../getColorCode'
 
 //Projection for the map
 const projection = geoMiller()
@@ -52,14 +53,14 @@ const Map = ({ regions, locations, ping }) => {
       {userLocation && (
         <>
           <Marker coordinates={userLocation}>
-            <circle r={3} fill="#F53" />
+            <circle r={3} fill="#6f6f6f" />
           </Marker>
           <Annotation
             subject={userLocation}
-            dx={-90}
-            dy={-30}
+            dx={-30}
+            dy={0}
             connectorProps={{
-              stroke: '#FF5533',
+              stroke: '#6f6f6f',
               strokeWidth: 1,
               strokeLinecap: 'round'
             }}
@@ -68,7 +69,8 @@ const Map = ({ regions, locations, ping }) => {
               x="-2"
               textAnchor="end"
               alignmentBaseline="middle"
-              fill="#F53"
+              fill="#6f6f6f"
+              fontSize={10}
             >
               Your Location
             </text>
@@ -81,23 +83,24 @@ const Map = ({ regions, locations, ping }) => {
           return (
             <React.Fragment key={region}>
               <Marker coordinates={locations[region]}>
-                <circle r={3} fill="#F53" />
+                <circle r={3} fill="#6f6f6f" />
               </Marker>
               <Annotation
                 subject={locations[region]}
-                dx={-90}
-                dy={-30}
+                dx={-50}
+                dy={0}
                 connectorProps={{
-                  stroke: '#FF5533',
+                  stroke: '#6f6f6f',
                   strokeWidth: 1,
-                  strokeLinecap: 'round'
+                  strokeLinecap: 'butt'
                 }}
               >
                 <text
                   x="-2"
                   textAnchor="end"
                   alignmentBaseline="middle"
-                  fill="#F53"
+                  fill="#6f6f6f"
+                  fontSize={10}
                 >
                   {region}
                 </text>
@@ -105,8 +108,8 @@ const Map = ({ regions, locations, ping }) => {
               <Line
                 from={userLocation}
                 to={locations[region]}
-                stroke="#FF5533"
-                strokeWidth={4}
+                stroke="#6f6f6f"
+                strokeWidth={1}
                 strokeLinecap="round"
               />
             </React.Fragment>
@@ -115,26 +118,28 @@ const Map = ({ regions, locations, ping }) => {
 
       {ping &&
         Object.keys(ping).map((loc) => {
+          let color = getColorCode(ping[loc])
           return (
             <React.Fragment key={loc}>
               <Marker coordinates={locations[loc]}>
-                <circle r={3} fill="#F53" />
+                <circle r={3} fill={color} />
               </Marker>
               <Annotation
                 subject={locations[loc]}
-                dx={-50}
-                dy={-50}
+                dx={10}
+                dy={0}
                 connectorProps={{
-                  stroke: '#FF5533',
+                  stroke: color,
                   strokeWidth: 1,
                   strokeLinecap: 'round'
                 }}
               >
                 <text
-                  x="-5"
-                  textAnchor="end"
+                  x="5"
+                  textAnchor="begin"
                   alignmentBaseline="middle"
-                  fill="#F53"
+                  fill={color}
+                  fontSize={10}
                 >
                   {ping[loc].toFixed(3)}ms
                 </text>
