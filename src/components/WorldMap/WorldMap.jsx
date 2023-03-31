@@ -20,7 +20,7 @@ const projection = geoMiller()
 
 const geoUrl = 'src\\assets\\countries-110m.json'
 
-const Map = ({ regions, locations, ping }) => {
+const WorldMap = ({ regions, locations, ping }) => {
   const { longitude, latitude } = useGeolocation()
   const userLocation = [longitude, latitude]
   return (
@@ -78,8 +78,7 @@ const Map = ({ regions, locations, ping }) => {
         </>
       )}
 
-      {regions &&
-        regions.map((region) => {
+      {regions?.map((region) => {
           return (
             <React.Fragment key={region}>
               <Marker coordinates={locations[region]}>
@@ -155,4 +154,4 @@ const StyledComposableMap = styled(ComposableMap)`
   height: 100vh;
   margin: 0 auto;
 `
-export default Map
+export default WorldMap;

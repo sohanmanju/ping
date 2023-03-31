@@ -18,6 +18,7 @@ const pingUrl = async (url) => {
     clearTimeout(timeoutId)
     return elapsed
   } catch (e) {
+    console.log(e)
     console.log('error')
   }
 }
@@ -27,5 +28,6 @@ const establishConnection = async (url) => {
   await pingUrl(url)
   return await pingUrl(url)
 }
+
 
 export default establishConnection

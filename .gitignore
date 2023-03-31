@@ -131,3 +131,4 @@ dist
 .prettierignore
 .new-component-config.json
 vite.config.js
+rome.json
