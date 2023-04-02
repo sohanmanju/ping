@@ -65,8 +65,6 @@ const WorldMap = ({ regions, locations, ping }) => {
 							strokeWidth: 1,
 							strokeLinecap: "round",
 						}}
-						
-						
 					>
 						<text
 							x="-2"
@@ -82,11 +80,10 @@ const WorldMap = ({ regions, locations, ping }) => {
 			)}
 
 			{regions?.map((region) => {
-				
-				const pingValue = ping?.[region]
-				let color = "#6f6f6f"
+				const pingValue = ping?.[region];
+				let color = "#6f6f6f";
 				if (pingValue) {
-					color = getColorCode(pingValue)
+					color = getColorCode(pingValue);
 				}
 				return (
 					<React.Fragment key={region}>
@@ -113,22 +110,26 @@ const WorldMap = ({ regions, locations, ping }) => {
 								{region}
 							</text>
 							{ping?.[region] && (
-									<text
-										x="-2"
-										y="10"
-										textAnchor="end"
-										alignmentBaseline="middle"
-										fill={color}
-										fontSize={10}
-									>
-										{ping[region].toFixed(3)}ms
-									</text>,
-								)}
+								<text
+									x="-2"
+									y="10"
+									textAnchor="end"
+									alignmentBaseline="middle"
+									fill={color}
+									fontSize={10}
+								>
+									{ping[region].toFixed(3)}ms
+								</text>
+							)}
 						</Annotation>
 						<Line
 							from={userLocation}
 							to={locations[region]}
-							coordinates={[userLocation,...getALotOfMidPoints(userLocation,locations[region]),locations[region]]}
+							coordinates={[
+								userLocation,
+								...getALotOfMidPoints(userLocation, locations[region]),
+								locations[region],
+							]}
 							stroke="#6f6f6f"
 							strokeWidth={1}
 							strokeLinecap="round"
