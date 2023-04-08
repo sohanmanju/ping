@@ -6,7 +6,7 @@ import WorldMap from './components/WorldMap'
 import Locations from './coordinates.json'
 import GlobalStyles from './global-styles'
 
-const LocationData: Record<string, Record<string,number[]>> = Locations
+const LocationData  = Locations as unknown as Record<string, Record<string,[number ,number]>>
 
 const App: React.FC = () => {
   const [regions, setRegions] = useState<string[]>([])
