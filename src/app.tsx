@@ -33,7 +33,6 @@ const App: React.FC = () => {
           />
         </SecondWrapper>
         </MainWrapper>
-      <GlobalStyles />
     </>
   )
 }
