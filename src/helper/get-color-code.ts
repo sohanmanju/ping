@@ -1,4 +1,4 @@
-const getColorCode = (num) => {
+const getColorCode = (num: number): string => {
   if (num >= 1 && num <= 50) {
     return '#4CAF50' // green
   } else if (num >= 51 && num <= 80) {

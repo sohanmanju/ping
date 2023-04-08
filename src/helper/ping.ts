@@ -1,4 +1,4 @@
-const pingUrl = async (url) => {
+const pingUrl = async (url: string): Promise<number> => {
   const abortController = new AbortController()
   const timeoutId = setTimeout(() => {
     abortController.abort()
@@ -10,7 +10,7 @@ const pingUrl = async (url) => {
       signal: abortController.signal,
       cache: 'no-store',
       credentials: 'omit',
-      redirect: 'error'
+      redirect: 'error',
     })
     const endTime = performance.now()
     const elapsed = endTime - startTime
@@ -20,14 +20,16 @@ const pingUrl = async (url) => {
   } catch (e) {
     console.log(e)
     console.log('error')
+    return -1
   }
 }
 
-const establishConnection = async (url) => {
+const establishConnection = async (
+  url: string,
+): Promise<number> => {
   await pingUrl(url)
   await pingUrl(url)
   return await pingUrl(url)
 }
-
 
 export default establishConnection
