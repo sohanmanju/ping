@@ -13,6 +13,7 @@ import useGeolocation from 'react-hook-geolocation'
 import getColorCode from '../helper/get-color-code'
 import { getALotOfMidPoints } from '../helper/get-a-lot-of-midpoints'
 import React from 'react'
+import { Coordinate } from '../types/utils'
 
 //Projection for the map
 const projection = geoMiller()
@@ -22,7 +23,7 @@ const projection = geoMiller()
 const geoUrl = 'src\\assets\\countries-110m.json'
 
 interface WorldMapProps {
-  locations: Record<string, [number,number]>,
+  locations: Record<string, Coordinate>,
   regions: string[],
   ping: Record<string,number>
 }
